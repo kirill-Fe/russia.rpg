@@ -3,18 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Russia RPG | Сервер GTA SAMP</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Russia RPG | Бесплатный сайт</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="shortcut icon" href="./img/icon.png" type="image/x-icon">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #0a0a0a;
+            color: #fff;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
         /* Кастомный курсор */
         html {
             cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%23ff5e00" d="M3 3l18 18-6-6V11L7 6v11z"/></svg>'), auto;
         }
 
-        a, button, .btn, .gallery-item, .feature-card, .social-links a {
+        a, button, .btn {
             cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%23ff0000" d="M3 3l18 18-6-6V11L7 6v11z"/></svg>'), pointer;
         }
 
@@ -44,6 +69,240 @@
             scrollbar-width: thin;
             scrollbar-color: #ff5e00 #0a0a0a;
         }
+        
+        header {
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.9);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+            border-radius: 100px
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(90deg, #ff5e00, #ff0000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 20px 80px;
+        }
+        
+        .main-title {
+            font-size: 48px;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, #fff, #ff5e00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .subtitle {
+            font-size: 24px;
+            margin-bottom: 40px;
+            max-width: 800px;
+            line-height: 1.6;
+            color: #ccc;
+        }
+        
+        .highlight {
+            color: #ff5e00;
+            font-weight: 600;
+        }
+        
+        .code-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 94, 0, 0.3);
+            border-radius: 10px;
+            padding: 25px;
+            margin: 30px 0;
+            max-width: 900px;
+            text-align: left;
+            position: relative;
+        }
+        
+        .code-title {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #ff5e00;
+            display: flex;
+            align-items: center;
+        }
+        
+        .code-title i {
+            margin-right: 10px;
+        }
+        
+        .code-content {
+            background: #111;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: monospace;
+            color: #0afc0a;
+            border: 1px solid #333;
+        }
+        
+        .social-section {
+            margin: 40px 0;
+        }
+        
+        .social-title {
+            font-size: 28px;
+            margin-bottom: 25px;
+            color: #ff5e00;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .social-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 25px;
+            width: 200px;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .social-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 94, 0, 0.1);
+            border-color: rgba(255, 94, 0, 0.3);
+        }
+        
+        .social-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+        
+        .vk-icon {
+            color: #4a76a8;
+        }
+        
+        .tg-icon {
+            color: #2aabee;
+        }
+        
+        .social-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .social-card p {
+            color: #aaa;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(90deg, #ff5e00, #ff0000);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 94, 0, 0.2);
+        }
+        
+        footer {
+            background: #111;
+            padding: 30px 0 15px;
+            margin-top: auto;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .copyright {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .copyright a {
+            color: #ff5e00;
+            transition: color 0.3s;
+        }
+        
+        .copyright a:hover {
+            color: yellow;
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                height: auto;
+                padding: 15px 0;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            .main-title {
+                font-size: 36px;
+            }
+            
+            .subtitle {
+                font-size: 18px;
+            }
+            
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -53,148 +312,79 @@
                 <img src="./img/icon.png" alt="Russia RPG">
                 <span class="logo-text">Russia RPG</span>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="https://t.me/Russia_RPG/2173">Правила</a></li>
-                    <li><a href="https://t.me/Russia_RPG">Форум</a></li>
-                </ul>
-            </nav>
         </div>
     </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Russia RPG</h1>
-            <p>Самый атмосферный сервер в GTA SA. Присоединяйся к нашему серверу и окунись в мир настоящей ролевой игры!</p>
-            <div class="hero-btns">
-                <a href="//files.adv-rp.com/static/resources/sampadvancerp.exe" class="btn btn-primary">Начать играть(с пк)</a>
-                <a href="https://content.unisamp-mobile.com/jmobile_cache/mobile/apk/samp.apk" class="btn btn-primary">Начать играть(с Android)</a>
+    <main class="main-content">
+        <h1 class="main-title">Russia RPG - Сайт проекта</h1>
+        <p class="subtitle">Данный веб-сайт отдается бесплатно, так как <span class="highlight">пропал интерес развивать сервер в SAMP</span>. Код сайта можно получить, связавшись со мной.</p>
+        
+        <div class="code-box">
+            <div class="code-title">
+                <i class="fas fa-code"></i>
+                Информация о сайте
+            </div>
+            <div class="code-content">
+                // Код на сайте Russia RPG <br>
+                // Статус: Доступен БЕСПЛАТНО<br>
+                // Причина: Потерял интерес к разработке SAMP<br>
+                // Свяжитесь со мной, чтобы получить исходный код
             </div>
         </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">О НАШЕМ ПРОЕКТЕ</h2>
-            <div class="features">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-users"></i>
+        
+        <div class="social-section">
+            <h2 class="social-title">Свяжитесь со мной</h2>
+            <div class="social-links">
+                <div class="social-card">
+                    <div class="social-icon vk-icon">
+                        <i class="fab fa-vk"></i>
                     </div>
-                    <h3>Активное сообщество</h3>
-                    <p>Более 3-х активных игроков ежедневно. Присоединяйся к нашему дружному комьюнити!</p>
+                    <h3>ВКонтакте</h3>
+                    <p>Связь через ВК</p>
+                    <a href="https://vk.com/Kirill_Florik" class="btn btn-primary">Написать</a>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-code"></i>
+                
+                <div class="social-card">
+                    <div class="social-icon tg-icon">
+                        <i class="fab fa-telegram"></i>
                     </div>
-                    <h3>Уникальный мод</h3>
-                    <p>Собственная разработка с множеством уникальных фич и систем для полного погружения в RPG.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Честная игра</h3>
-                    <p>Профессиональная администрация и строгие правила для поддержания честной игры.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" style="background: #111;">
-        <div class="container">
-            <h2 class="section-title">ГАЛЕРЕЯ</h2>
-            <div class="gallery">
-                <div class="gallery-item">
-                    <img src="./img/spawn.png" alt="Russia RPG">
-                </div>
-                <div class="gallery-item">
-                    <img src="./img/pref.png" alt="Russia RPG">
-                </div>
-                <div class="gallery-item">
-                    <img src="./img/aveh.png" alt="Russia RPG">
-                </div>
-                <div class="gallery-item">
-                    <img src="./img/amoto.png" alt="Russia RPG">
-                </div>
-                <div class="gallery-item">
-                    <img src="./img/acar-no-donate.png" alt="Russia RPG">
+                    <h3>Telegram</h3>
+                    <p>Быстрая связь</p>
+                    <a href="https://t.me/Kirill_Florik" class="btn btn-primary">Написать</a>
                 </div>
             </div>
         </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">КАК НАЧАТЬ ИГРАТЬ</h2>
-            <div class="features">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-download"></i>
-                    </div>
-                    <h3>Шаг 1</h3>
-                    <p>Скачайте и установите GTA SAMP.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-user-plus"></i>
-                    </div>
-                    <h3>Шаг 2</h3>
-                    <p>Создайте ник в лаунчере и заходите на сервер сервер закрылся из за того что у меня пропал интерес</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-gamepad"></i>
-                    </div>
-                    <h3>Шаг 3</h3>
-                    <p>Подключитесь к серверу и развивайтесь.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    </main>
 
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Russia RPG</h3>
-                    <p>Самый атмосферный сервер в GTA SA.</p>
-                    <div class="social-links">
-                        <!--<a href=""><i class="fab fa-vk"></i></a>
-                        <a href=""><i class="fab fa-discord"></i></a>-->
-                        <a href="https://t.me/Russia_RPG"><i class="fab fa-telegram"></i></a>
-                    </div>
+                <div class="copyright">
+                    <p>&copy; 2025 Russia RPG. Исходный код сайта доступен бесплатно.</p>
                 </div>
-                <div class="footer-column">
-                    <h3>Навигация</h3>
-                    <ul>
-                        <li><a href="https://t.me/Russia_RPG/2173">Правила</a></li>
-                        <li><a href="https://t.me/Russia_RPG">Форум</a></li>
-                    </ul>
+                <div class="copyright">
+                    <a href="https://kirill-fe.github.io/projects">florik-projects</a>
                 </div>
-                <div class="footer-column">
-                    <h3>Помощь</h3>
-                    <ul>
-                        <li><a href="https://t.me/Russia_RPG_bot">Техподдержка</a></li>
-                        <li><a href="https://t.me/Kirill_Florik">Баги и ошибки</a></li>
-                    </ul>
-                </div>
-                <!--<div class="footer-column">
-                    <h3>Контакты</h3>
-                    <ul>
-                        <li><i class="fas fa-envelope"></i> russia.rpg.samp@gmail.com</li>
-                    </ul>
-                </div>-->
-            </div>
-            <div class="copyright">
-                <p>&copy; 2025 Russia RPG. Все права защищены.</p>
-                <a href="https://kirill-fe.github.io/projects">florik-projects</a>
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Плавное появление элементов при загрузке
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.main-title, .subtitle, .code-box, .social-card');
+            
+            elements.forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'all 0.6s ease';
+                
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, 200 + (index * 150));
+            });
+        });
+    </script>
 </body>
 </html>
-
